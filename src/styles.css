@@ -84,22 +84,13 @@
   --glass-bg-clear: oklch(0.18 0.006 264 / 38%);
 
   /* Monochrome light source — no colored gradients anywhere. */
-  --gradient-hero: radial-gradient(
-    110% 70% at 50% -8%,
-    oklch(1 0 0 / 9%) 0%,
-    transparent 62%
-  );
-  --gradient-text: linear-gradient(
-    180deg,
-    oklch(0.99 0 0) 0%,
-    oklch(0.99 0 0 / 66%) 100%
-  );
-  --shadow-glass: 0 1px 0 0 oklch(1 0 0 / 10%) inset,
-    0 0 0 0.5px oklch(1 0 0 / 6%),
+  --gradient-hero: radial-gradient(110% 70% at 50% -8%, oklch(1 0 0 / 9%) 0%, transparent 62%);
+  --gradient-text: linear-gradient(180deg, oklch(0.99 0 0) 0%, oklch(0.99 0 0 / 66%) 100%);
+  --shadow-glass:
+    0 1px 0 0 oklch(1 0 0 / 10%) inset, 0 0 0 0.5px oklch(1 0 0 / 6%),
     0 24px 60px -24px oklch(0 0 0 / 70%);
   --shadow-lift: 0 40px 80px -40px oklch(0 0 0 / 85%);
-  --shadow-glow: 0 1px 0 0 oklch(1 0 0 / 18%) inset,
-    0 18px 50px -20px oklch(0 0 0 / 80%);
+  --shadow-glow: 0 1px 0 0 oklch(1 0 0 / 18%) inset, 0 18px 50px -20px oklch(0 0 0 / 80%);
 }
 
 @layer base {
@@ -114,6 +105,11 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(58rem 44rem at 86% -12%, oklch(0.56 0.17 275 / 0.09), transparent 62%),
+      radial-gradient(46rem 40rem at -12% 34%, oklch(0.58 0.15 255 / 0.08), transparent 62%),
+      radial-gradient(40rem 34rem at 50% 118%, oklch(0.55 0.16 285 / 0.07), transparent 65%);
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "ss01";
@@ -134,6 +130,48 @@
       transition-duration: 0.001ms !important;
     }
   }
+}
+
+/* --- Lenis smooth scroll --- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* --- Ambient decorative orbs (subtle color for the whole site) --- */
+@utility ambient-orb {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.4;
+  will-change: transform;
+}
+
+@keyframes orb-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(24px, -32px, 0) scale(1.12);
+  }
+}
+
+@utility animate-orb {
+  animation: orb-drift 14s var(--ease-hig) infinite;
 }
 
 /* --- Materials (Liquid Glass) --- */
@@ -211,12 +249,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(
-      100deg,
-      transparent 35%,
-      oklch(1 0 0 / 10%) 50%,
-      transparent 65%
-    );
+    background: linear-gradient(100deg, transparent 35%, oklch(1 0 0 / 10%) 50%, transparent 65%);
     transform: translateX(-120%);
     transition: transform 1s var(--ease-hig);
   }

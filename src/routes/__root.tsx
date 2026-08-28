@@ -11,7 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { Nav } from "@/components/site/Nav";
+import { profile } from "@/lib/site-data";
+import BubbleMenu from "@/components/site/BubbleMenu/BubbleMenu";
 import { Footer } from "@/components/site/Footer";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -83,8 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Robert Carrasco — Ingeniero de Software" },
       {
         name: "description",
-        content:
-          "Portafolio de Robert Abdiel Carrasco Montero, ingeniero de software full-stack.",
+        content: "Portafolio de Robert Abdiel Carrasco Montero, ingeniero de software full-stack.",
       },
       { name: "author", content: "Robert Abdiel Carrasco Montero" },
       { property: "og:type", content: "website" },
@@ -127,7 +127,47 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="grain flex min-h-screen flex-col">
-        <Nav />
+        <BubbleMenu
+          logo={
+            <span className="whitespace-nowrap font-display text-sm font-semibold tracking-tight text-[#111318]">
+              {profile.shortName}
+            </span>
+          }
+          menuAriaLabel="Abrir menú"
+          useFixedPosition
+          menuBg="#ffffff"
+          menuContentColor="#0a65c7ff"
+          items={[
+            {
+              label: "Inicio",
+              href: "/",
+              ariaLabel: "Ir al inicio",
+              rotation: -6,
+              hoverStyles: { bgColor: "var(--color-primary)", textColor: "#ffffff" },
+            },
+            {
+              label: "Proyectos",
+              href: "/proyectos",
+              ariaLabel: "Ver proyectos",
+              rotation: 6,
+              hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+            },
+            {
+              label: "Sobre mí",
+              href: "/sobre-mi",
+              ariaLabel: "Acerca de mí",
+              rotation: 6,
+              hoverStyles: { bgColor: "#22d3ee", textColor: "#04121a" },
+            },
+            {
+              label: "Contacto",
+              href: "/contacto",
+              ariaLabel: "Ir a contacto",
+              rotation: -6,
+              hoverStyles: { bgColor: "#f97316", textColor: "#ffffff" },
+            },
+          ]}
+        />
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <main className="flex-1">
           <Outlet />

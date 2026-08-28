@@ -13,6 +13,7 @@ export type Discipline = {
   title: string;
   description: string;
   items: string[];
+  image: string;
 };
 
 export const profile = {
@@ -70,18 +71,21 @@ export const disciplines: Discipline[] = [
     description:
       "Interfaces dinámicas, responsivas y optimizadas, con foco en experiencia de usuario, accesibilidad y rendimiento real.",
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "React Native"],
+    image: "/disciplines/frontend.svg",
   },
   {
     title: "Back-end",
     description:
       "Lógica de negocio, APIs y aplicaciones seguras y eficientes, con una arquitectura limpia y mantenible.",
     items: ["C#", "Node.js", "Python", "PHP", "Docker"],
+    image: "/disciplines/backend.svg",
   },
   {
     title: "Datos y análisis",
     description:
       "Modelado de datos, consultas y optimización para almacenar y procesar información de forma correcta y veloz.",
     items: ["PostgreSQL", "SQL Server", "MongoDB", "MySQL"],
+    image: "/disciplines/data.svg",
   },
 ];
 

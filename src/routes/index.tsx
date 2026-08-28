@@ -3,11 +3,16 @@ import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, Github } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { ProjectCard } from "@/components/site/ProjectCard";
+import { ProjectStackCard } from "@/components/site/ProjectStackCard";
 import { Marquee } from "@/components/site/Marquee";
+import PixelBlast from "@/components/site/PixelBlast/PixelBlast";
+import ScrollStack, { ScrollStackItem } from "@/components/site/ScrollStack/ScrollStack";
+import ScrollFloat from "@/components/site/ScrollFloat/ScrollFloat";
+import TextLoop from "@/components/site/TextLoop/TextLoop";
+import TiltedCard from "@/components/site/TiltedCard/TiltedCard";
 import { disciplines, ogImage, profile, projects, stats, tools } from "@/lib/site-data";
 
-const title = "Robert Carrasco — Ingeniero de Software Full-Stack";
+const title = "Robert Carrasco";
 const description =
   "Diseño y desarrollo interfaces web rápidas y accesibles: React, TypeScript, Next.js y arquitecturas back-end limpias. Mira mis proyectos.";
 
@@ -30,8 +35,32 @@ function Hero() {
   const ease = [0.32, 0.72, 0, 1] as const;
 
   return (
-    <section className="hero-glow relative overflow-hidden px-4 pt-36 pb-24 sm:pt-44 sm:pb-32">
-      <div className="mx-auto max-w-5xl text-center">
+    <section className="relative overflow-hidden px-4 pt-36 pb-24 sm:pt-44 sm:pb-32">
+      {/* Animated pixel background */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <PixelBlast
+          variant="square"
+          pixelSize={3}
+          color="#9da9ff"
+          patternScale={1.4}
+          patternDensity={1}
+          pixelSizeJitter={0.15}
+          enableRipples
+          rippleSpeed={0.35}
+          rippleThickness={0.12}
+          rippleIntensityScale={1.1}
+          liquid={false}
+          speed={0.5}
+          edgeFade={0.34}
+          transparent
+        />
+        <div className="hero-glow absolute inset-0" />
+        <div className="ambient-orb animate-orb -top-28 left-1/2 h-80 w-[44rem] -translate-x-1/2 bg-primary/20" />
+        <div className="ambient-orb right-[6%] top-28 h-64 w-64 animate-orb bg-[oklch(0.62_0.19_285/0.22)]" />
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-linear-to-b from-transparent to-background" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-5xl text-center">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,7 +79,9 @@ function Hero() {
         >
           <span className="text-gradient">Software que se siente</span>
           <br />
-          <span className="text-primary">simple y preciso.</span>
+          <span className="bg-linear-to-r from-[oklch(0.72_0.16_275)] to-[oklch(0.6_0.19_258)] bg-clip-text text-transparent">
+            simple y preciso.
+          </span>
         </motion.h1>
 
         <motion.p
@@ -91,7 +122,10 @@ function Hero() {
           className="mx-auto mt-16 grid max-w-2xl grid-cols-3 gap-4"
         >
           {stats.map((stat) => (
-            <div key={stat.label} className="glass glass-sheen rounded-3xl px-4 py-6 transition-transform duration-500 ease-hig hover:-translate-y-1">
+            <div
+              key={stat.label}
+              className="glass glass-sheen rounded-3xl px-4 py-6 transition-transform duration-500 ease-hig hover:-translate-y-1"
+            >
               <dt className="sr-only">{stat.label}</dt>
               <dd>
                 <span className="block font-display text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -116,22 +150,42 @@ function Index() {
 
       <section className="px-4 py-20 sm:py-28" aria-labelledby="trabajo">
         <div className="mx-auto max-w-5xl">
-          <SectionHeading
-            eyebrow="Trabajo seleccionado"
-            title="Proyectos en producción"
-            description="Productos reales, con usuarios reales. Cada uno diseñado con la misma obsesión por el detalle y el rendimiento."
-          />
+          <div className="relative overflow-hidden text-center">
+            <div
+              className="pointer-events-none mx-auto max-w-4xl lect-none opacity-80"
+              aria-hidden="true"
+            >
+
+            </div>
+            <ScrollFloat
+              containerClassName="mt-8 sm:mt-12"
+              textClassName="title"
+              animationDuration={1}
+              ease="back.inOut(2)"
+              stagger={0.03}
+            >
+              Proyectos en producción
+            </ScrollFloat>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Productos reales, con usuarios reales. Sigue haciendo scroll y observa cómo se apila
+              el trabajo.
+            </p>
+          </div>
           <h2 id="trabajo" className="sr-only">
             Trabajo seleccionado
           </h2>
 
-          <div className="mt-12 grid gap-8">
-            {projects.map((project, i) => (
-              <ProjectCard key={project.slug} project={project} index={i} />
-            ))}
+          <div className="mt-12">
+            <ScrollStack>
+              {projects.map((project, i) => (
+                <ScrollStackItem key={project.slug} itemClassName="scroll-stack-project">
+                  <ProjectStackCard project={project} index={i} />
+                </ScrollStackItem>
+              ))}
+            </ScrollStack>
           </div>
 
-          <Reveal className="mt-10 text-center" delay={0.1}>
+          <Reveal className="mt-12 text-center" delay={0.1}>
             <Link
               to="/proyectos"
               className="inline-flex min-h-12 items-center gap-1.5 rounded-full border border-border px-6 text-sm font-medium transition-colors hover:bg-elevated"
@@ -150,20 +204,34 @@ function Index() {
             description="Cubro el ciclo completo: interfaz, lógica de negocio y datos, con arquitectura limpia y código mantenible."
           />
 
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-10 sm:gap-8 md:grid-cols-3">
             {disciplines.map((d, i) => (
               <Reveal key={d.title} delay={i * 0.08}>
-                <article className="glass glass-sheen h-full rounded-4xl p-7 transition-transform duration-500 ease-hig hover:-translate-y-1">
-                  <span className="font-display text-sm font-semibold text-primary">
-                    0{i + 1}
-                  </span>
-                  <h3 className="mt-3 font-display text-xl font-semibold tracking-tight">
+                <div className="flex h-full flex-col items-center text-center">
+                  <div className="w-full">
+                    <TiltedCard
+                      imageSrc={d.image}
+                      altText={`Área: ${d.title}`}
+                      captionText={d.title}
+                      containerHeight={300}
+                      containerWidth="100%"
+                      imageHeight={300}
+                      imageWidth="100%"
+                      scaleOnHover={1.06}
+                      rotateAmplitude={12}
+                      showMobileWarning={false}
+                      showTooltip={false}
+                      displayOverlayContent
+                      overlayContent={<span className="tilted-card-badge">{d.title}</span>}
+                    />
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-semibold tracking-tight">
                     {d.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {d.description}
                   </p>
-                  <ul className="mt-5 flex flex-wrap gap-1.5">
+                  <ul className="mt-5 flex flex-wrap justify-center gap-1.5">
                     {d.items.map((item) => (
                       <li
                         key={item}
@@ -173,7 +241,7 @@ function Index() {
                       </li>
                     ))}
                   </ul>
-                </article>
+                </div>
               </Reveal>
             ))}
           </div>

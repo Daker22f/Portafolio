@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { projects } from "@/lib/site-data";
+import { ogImage, projects } from "@/lib/site-data";
 
 const title = "Proyectos — Robert Carrasco";
 const description =
@@ -14,8 +14,8 @@ export const Route = createFileRoute("/proyectos")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:image", content: projects[0].image },
-      { name: "twitter:image", content: projects[0].image },
+      { property: "og:image", content: ogImage },
+      { name: "twitter:image", content: ogImage },
     ],
   }),
   component: ProyectosPage,

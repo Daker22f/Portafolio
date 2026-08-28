@@ -5,7 +5,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { Marquee } from "@/components/site/Marquee";
-import { disciplines, profile, projects, stats, tools } from "@/lib/site-data";
+import { disciplines, ogImage, profile, projects, stats, tools } from "@/lib/site-data";
 
 const title = "Robert Carrasco — Ingeniero de Software Full-Stack";
 const description =
@@ -18,8 +18,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:image", content: projects[0].image },
-      { name: "twitter:image", content: projects[0].image },
+      { property: "og:image", content: ogImage },
+      { name: "twitter:image", content: ogImage },
     ],
   }),
   component: Index,
@@ -91,7 +91,7 @@ function Hero() {
           className="mx-auto mt-16 grid max-w-2xl grid-cols-3 gap-4"
         >
           {stats.map((stat) => (
-            <div key={stat.label} className="glass rounded-3xl px-4 py-6">
+            <div key={stat.label} className="glass glass-sheen rounded-3xl px-4 py-6 transition-transform duration-500 ease-hig hover:-translate-y-1">
               <dt className="sr-only">{stat.label}</dt>
               <dd>
                 <span className="block font-display text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -153,7 +153,7 @@ function Index() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {disciplines.map((d, i) => (
               <Reveal key={d.title} delay={i * 0.08}>
-                <article className="glass h-full rounded-4xl p-7">
+                <article className="glass glass-sheen h-full rounded-4xl p-7 transition-transform duration-500 ease-hig hover:-translate-y-1">
                   <span className="font-display text-sm font-semibold text-primary">
                     0{i + 1}
                   </span>
@@ -191,7 +191,7 @@ function Index() {
 
       <section className="px-4 py-24">
         <Reveal className="mx-auto max-w-4xl">
-          <div className="hero-glow glass overflow-hidden rounded-4xl px-8 py-16 text-center sm:px-14">
+          <div className="hero-glow glass glass-sheen overflow-hidden rounded-4xl px-8 py-16 text-center sm:px-14">
             <h2 className="display-tight text-4xl text-balance sm:text-5xl">
               Hablemos de tu próximo producto
             </h2>

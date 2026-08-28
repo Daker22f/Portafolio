@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { createFileRoute as _unused } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Marquee } from "@/components/site/Marquee";

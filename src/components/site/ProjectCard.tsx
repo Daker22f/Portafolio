@@ -11,7 +11,8 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.85, delay: index * 0.08, ease: [0.32, 0.72, 0, 1] }}
-      className="group relative overflow-hidden rounded-4xl border border-hairline bg-card shadow-lift"
+      whileHover={reduceMotion ? {} : { y: -6 }}
+      className="glass glass-sheen group relative overflow-hidden rounded-4xl shadow-lift"
     >
       <a
         href={project.url}
@@ -24,9 +25,10 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             src={project.image}
             alt={`Vista previa del proyecto ${project.name}`}
             loading="lazy"
+            decoding="async"
             className="size-full object-cover transition-transform duration-700 ease-hig group-hover:scale-[1.04]"
           />
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-card to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-background to-transparent" />
         </div>
 
         <div className="relative -mt-16 p-6 sm:p-8">

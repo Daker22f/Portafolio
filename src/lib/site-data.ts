@@ -111,3 +111,5 @@ export const stats = [
   { value: "20+", label: "Proyectos entregados" },
   { value: "3", label: "Productos en producción" },
 ];
+
+export const ogImage: string = projects[0]?.image ?? "";

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { projects } from "@/lib/site-data";
+import { ogImage, projects } from "@/lib/site-data";
 
 const title = "Proyectos — Robert Carrasco";
 const description =

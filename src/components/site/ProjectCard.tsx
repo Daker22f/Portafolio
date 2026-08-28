@@ -11,7 +11,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.85, delay: index * 0.08, ease: [0.32, 0.72, 0, 1] }}
-      whileHover={reduceMotion ? undefined : { y: -6 }}
+      whileHover={reduceMotion ? {} : { y: -6 }}
       className="glass glass-sheen group relative overflow-hidden rounded-4xl shadow-lift"
     >
       <a

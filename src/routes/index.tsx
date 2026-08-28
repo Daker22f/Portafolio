@@ -5,7 +5,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { Marquee } from "@/components/site/Marquee";
-import { disciplines, profile, projects, stats, tools } from "@/lib/site-data";
+import { disciplines, ogImage, profile, projects, stats, tools } from "@/lib/site-data";
 
 const title = "Robert Carrasco — Ingeniero de Software Full-Stack";
 const description =
@@ -18,8 +18,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:image", content: projects[0].image },
-      { name: "twitter:image", content: projects[0].image },
+      { property: "og:image", content: ogImage },
+      { name: "twitter:image", content: ogImage },
     ],
   }),
   component: Index,

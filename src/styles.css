@@ -83,21 +83,23 @@
   --glass-bg: oklch(0.18 0.006 264 / 62%);
   --glass-bg-clear: oklch(0.18 0.006 264 / 38%);
 
+  /* Monochrome light source — no colored gradients anywhere. */
   --gradient-hero: radial-gradient(
-      120% 80% at 50% -10%,
-      oklch(0.635 0.187 258 / 26%) 0%,
-      transparent 60%
-    ),
-    radial-gradient(70% 60% at 85% 10%, oklch(0.68 0.16 320 / 14%) 0%, transparent 65%);
+    110% 70% at 50% -8%,
+    oklch(1 0 0 / 9%) 0%,
+    transparent 62%
+  );
   --gradient-text: linear-gradient(
     180deg,
     oklch(0.99 0 0) 0%,
-    oklch(0.99 0 0 / 62%) 100%
+    oklch(0.99 0 0 / 66%) 100%
   );
-  --shadow-glass: 0 1px 0 0 oklch(1 0 0 / 8%) inset, 0 24px 60px -24px oklch(0 0 0 / 70%);
+  --shadow-glass: 0 1px 0 0 oklch(1 0 0 / 10%) inset,
+    0 0 0 0.5px oklch(1 0 0 / 6%),
+    0 24px 60px -24px oklch(0 0 0 / 70%);
   --shadow-lift: 0 40px 80px -40px oklch(0 0 0 / 85%);
-  --shadow-glow: 0 0 0 1px oklch(0.635 0.187 258 / 30%),
-    0 20px 60px -20px oklch(0.635 0.187 258 / 45%);
+  --shadow-glow: 0 1px 0 0 oklch(1 0 0 / 18%) inset,
+    0 18px 50px -20px oklch(0 0 0 / 80%);
 }
 
 @layer base {

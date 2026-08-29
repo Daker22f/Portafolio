@@ -25,8 +25,8 @@ export const profile = {
   github: "https://github.com/Daker22f",
   legacySite: "https://robert-dev.vercel.app/",
   intro:
-    "Construyo interfaces web y diseño sistemas con especial atención a la accesibilidad y el rendimiento. Programo desde cero y disfruto dando vida a mis ideas.",
-  bio: "Mi pasión por la programación comenzó en la escuela y desde entonces he trabajado en proyectos que van desde plataformas de comercio hasta experiencias interactivas avanzadas. Siempre busco aprender nuevas tecnologías y mantenerme al día con las últimas tendencias del desarrollo de software.",
+    "Construyo tu proxima aplicación web, desde el diseño hasta el despliegue.",
+
 } as const;
 
 export const projects: Project[] = [

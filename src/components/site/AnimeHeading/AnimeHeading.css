@@ -1,0 +1,37 @@
+.anime-heading__word {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 0.28em;
+}
+
+.anime-heading__word:last-child {
+  margin-right: 0;
+}
+
+.anime-heading__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 48px, 0) rotate(6deg);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.anime-heading.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.anime-heading.title.title--left {
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anime-heading__char {
+    opacity: 1;
+    transform: none;
+  }
+}

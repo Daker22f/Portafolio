@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import { gsap } from "gsap";
+import { Link } from "@tanstack/react-router";
 
 import "./BubbleMenu.css";
 
@@ -210,9 +211,9 @@ export default function BubbleMenu({
           <ul className="pill-list" role="menu" aria-label="Enlaces del menú">
             {menuItems.map((item, idx) => (
               <li key={idx} role="none" className="pill-col">
-                <a
+                <Link
                   role="menuitem"
-                  href={item.href}
+                  to={item.href}
                   aria-label={item.ariaLabel || item.label}
                   className="pill-link"
                   style={
@@ -237,7 +238,7 @@ export default function BubbleMenu({
                   >
                     {item.label}
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

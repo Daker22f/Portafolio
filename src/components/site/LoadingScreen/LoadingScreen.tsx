@@ -101,3 +101,4 @@ const LoadingScreen = ({ resolveInterval = 100, caption = "Cargando" }: LoadingS
 };
 
 export default LoadingScreen;
+

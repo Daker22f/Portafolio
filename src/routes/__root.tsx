@@ -11,8 +11,12 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { Nav } from "@/components/site/Nav";
+import { profile } from "@/lib/site-data";
+import BubbleMenu from "@/components/site/BubbleMenu/BubbleMenu";
 import { Footer } from "@/components/site/Footer";
+import LoadingScreen from "@/components/site/LoadingScreen/LoadingScreen";
+import TargetCursor from "@/components/site/TargetCursor/TargetCursor";
+import { SmoothScroll } from "@/components/site/SmoothScroll/SmoothScroll";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -83,8 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Robert Carrasco — Ingeniero de Software" },
       {
         name: "description",
-        content:
-          "Portafolio de Robert Abdiel Carrasco Montero, ingeniero de software full-stack.",
+        content: "Portafolio de Robert Abdiel Carrasco Montero, ingeniero de software full-stack.",
       },
       { name: "author", content: "Robert Abdiel Carrasco Montero" },
       { property: "og:type", content: "website" },
@@ -126,14 +129,66 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="grain flex min-h-screen flex-col">
-        <Nav />
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
+      <SmoothScroll>
+        <div className="grain flex min-h-screen flex-col">
+          <BubbleMenu
+            logo={
+              <span className="whitespace-nowrap font-display text-sm font-semibold tracking-tight text-[#111318]">
+                {profile.shortName}
+              </span>
+            }
+            menuAriaLabel="Abrir menú"
+            useFixedPosition
+            menuBg="#ffffff"
+            menuContentColor="#111318"
+            items={[
+              {
+                label: "Inicio",
+                href: "/",
+                ariaLabel: "Ir al inicio",
+                rotation: -6,
+                hoverStyles: { bgColor: "var(--color-primary)", textColor: "#111318" },
+              },
+              {
+                label: "Proyectos",
+                href: "/proyectos",
+                ariaLabel: "Ver proyectos",
+                rotation: 6,
+                hoverStyles: { bgColor: "#d4d4d8", textColor: "#111318" },
+              },
+              {
+                label: "Sobre mí",
+                href: "/sobre-mi",
+                ariaLabel: "Acerca de mí",
+                rotation: 6,
+                hoverStyles: { bgColor: "#a1a1aa", textColor: "#111318" },
+              },
+              {
+                label: "Contacto",
+                href: "/contacto",
+                ariaLabel: "Ir a contacto",
+                rotation: -6,
+                hoverStyles: { bgColor: "#f4f4f5", textColor: "#111318" },
+              },
+            ]}
+          />
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </SmoothScroll>
+      <LoadingScreen />
+      <TargetCursor
+        spinDuration={2}
+        hideDefaultCursor
+        parallaxOn
+        hoverDuration={0.2}
+        cursorColor="#ffffff"
+        cursorColorOnTarget="#B497CF"
+        targetSelector="a, button, [role='button'], .cursor-target"
+      />
       <Toaster position="top-center" />
     </QueryClientProvider>
   );

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <rect width="160" height="160" fill="#000000"/>
+  <g fill="#ffffff" fill-opacity="1">
+    <path d="M0 80h160M80 0v160" stroke="#ffffff" stroke-width="1"/>
+  </g>
+  <g fill="#ffffff">
+    <circle cx="80" cy="80" r="30" fill-opacity="0.5"/>
+    <circle cx="0" cy="0" r="22" fill-opacity="0.32"/>
+    <circle cx="160" cy="0" r="22" fill-opacity="0.32"/>
+    <circle cx="0" cy="160" r="22" fill-opacity="0.32"/>
+    <circle cx="160" cy="160" r="22" fill-opacity="0.32"/>
+    <circle cx="80" cy="0" r="14" fill-opacity="0.5"/>
+    <circle cx="80" cy="160" r="14" fill-opacity="0.5"/>
+    <circle cx="0" cy="80" r="14" fill-opacity="0.5"/>
+    <circle cx="160" cy="80" r="14" fill-opacity="0.5"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="2">
+    <path d="M60 60q20 40 40 0" stroke-opacity="0.7"/>
+    <path d="M-20 -20q20 40 40 0" stroke-opacity="0.45"/>
+    <path d="M120 -20q20 40 40 0" stroke-opacity="0.45"/>
+    <path d="M-20 120q20 40 40 0" stroke-opacity="0.45"/>
+    <path d="M120 120q20 40 40 0" stroke-opacity="0.45"/>
+  </g>
+</svg>

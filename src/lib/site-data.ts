@@ -7,12 +7,15 @@ export type Project = {
   url: string;
   image: string;
   year: string;
+  stars: number;
+  collaborators: number;
 };
 
 export type Discipline = {
   title: string;
   description: string;
   items: string[];
+  image: string;
 };
 
 export const profile = {
@@ -23,9 +26,8 @@ export const profile = {
   email: "hola@robert-dev.com",
   github: "https://github.com/Daker22f",
   legacySite: "https://robert-dev.vercel.app/",
-  intro:
-    "Construyo interfaces web y diseño sistemas con especial atención a la accesibilidad y el rendimiento. Programo desde cero y disfruto dando vida a mis ideas.",
-  bio: "Mi pasión por la programación comenzó en la escuela y desde entonces he trabajado en proyectos que van desde plataformas de comercio hasta experiencias interactivas avanzadas. Siempre busco aprender nuevas tecnologías y mantenerme al día con las últimas tendencias del desarrollo de software.",
+  bio: "Ingeniero de software full-stack en Santo Domingo. Front-end con React y TypeScript, back-end con C#, Node y Python, y bases de datos relacionales y NoSQL.",
+  intro: "Construyo tu proxima aplicación web, desde el diseño hasta el despliegue.",
 } as const;
 
 export const projects: Project[] = [
@@ -39,6 +41,8 @@ export const projects: Project[] = [
     url: "https://www.brackix.com/es",
     image: "https://robert-dev.vercel.app/assets/images/work/Brackix.jpeg",
     year: "2025",
+    stars: 0,
+    collaborators: 1,
   },
   {
     slug: "undamned",
@@ -50,6 +54,8 @@ export const projects: Project[] = [
     url: "https://undamned.vercel.app/",
     image: "https://robert-dev.vercel.app/assets/images/work/Undamned.jpeg",
     year: "2025",
+    stars: 0,
+    collaborators: 1,
   },
   {
     slug: "kwixell",
@@ -61,6 +67,8 @@ export const projects: Project[] = [
     url: "https://kwixell.brackix.com/",
     image: "https://robert-dev.vercel.app/assets/images/work/kwixell.jpeg",
     year: "2024",
+    stars: 0,
+    collaborators: 1,
   },
 ];
 
@@ -70,18 +78,21 @@ export const disciplines: Discipline[] = [
     description:
       "Interfaces dinámicas, responsivas y optimizadas, con foco en experiencia de usuario, accesibilidad y rendimiento real.",
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "React Native"],
+    image: "/disciplines/frontend.png",
   },
   {
     title: "Back-end",
     description:
       "Lógica de negocio, APIs y aplicaciones seguras y eficientes, con una arquitectura limpia y mantenible.",
     items: ["C#", "Node.js", "Python", "PHP", "Docker"],
+    image: "/disciplines/backend.png",
   },
   {
     title: "Datos y análisis",
     description:
       "Modelado de datos, consultas y optimización para almacenar y procesar información de forma correcta y veloz.",
     items: ["PostgreSQL", "SQL Server", "MongoDB", "MySQL"],
+    image: "/disciplines/datos.png",
   },
 ];
 

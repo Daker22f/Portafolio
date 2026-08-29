@@ -141,7 +141,7 @@ uniform vec2 uMouse;
 
 #define PI 3.1415926538
 
-const int u_line_count = 16;
+const int u_line_count = 8;
 const float u_line_width = 7.0;
 const float u_line_blur = 10.0;
 
@@ -286,8 +286,8 @@ const Threads: React.FC<ThreadsProps> = ({
     const MAX_RENDER_DIM = isMobile ? 960 : 1920;
     const resize = () => {
       const { clientWidth, clientHeight } = container;
-      // Cap DPR at 1 on mobile to reduce shader workload
-      const baseDpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+      // Lower DPR on mobile to significantly reduce GPU load and prevent scroll lag
+      const baseDpr = isMobile ? 0.75 : Math.min(window.devicePixelRatio || 1, 2);
       const longestSide = Math.max(clientWidth, clientHeight) * baseDpr;
       const dpr = longestSide > MAX_RENDER_DIM ? (baseDpr * MAX_RENDER_DIM) / longestSide : baseDpr;
       renderer.dpr = dpr;

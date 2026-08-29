@@ -37,12 +37,13 @@ const LoadingScreen = ({ resolveInterval = 100, caption = "Cargando" }: LoadingS
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    if (hidden) return; // Don't lock if already hidden
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = previous;
     };
-  }, []);
+  }, [hidden]);
 
   useEffect(() => {
     if (resolved >= text.length) {

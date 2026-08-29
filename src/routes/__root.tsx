@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { profile } from "@/lib/site-data";
 import BubbleMenu from "@/components/site/BubbleMenu/BubbleMenu";
 import { Footer } from "@/components/site/Footer";
+import TargetCursor from "@/components/site/TargetCursor/TargetCursor";
 import { SmoothScroll } from "@/components/site/SmoothScroll/SmoothScroll";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -177,6 +178,15 @@ function RootComponent() {
           <Footer />
         </div>
       </SmoothScroll>
+      <TargetCursor
+        spinDuration={2}
+        hideDefaultCursor
+        parallaxOn
+        hoverDuration={0.2}
+        cursorColor="#ffffff"
+        cursorColorOnTarget="#B497CF"
+        targetSelector="a, button, [role='button'], .cursor-target"
+      />
       <Toaster position="top-center" />
     </QueryClientProvider>
   );

@@ -23,7 +23,7 @@ export const profile = {
   shortName: "Robert Carrasco",
   role: "Ingeniero de Software · Full-Stack",
   location: "Santo Domingo, República Dominicana",
-  email: "hola@robert-dev.com",
+  email: "abdielcarrasco01@gmail.com",
   github: "https://github.com/Daker22f",
   legacySite: "https://robert-dev.vercel.app/",
   bio: "Ingeniero de software full-stack en Santo Domingo. Front-end con React y TypeScript, back-end con C#, Node y Python, y bases de datos relacionales y NoSQL.",

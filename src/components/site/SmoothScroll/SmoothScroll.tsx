@@ -2,22 +2,25 @@ import { useEffect } from "react";
 import type { ReactNode } from "react";
 import Lenis from "lenis";
 
-const LENIS_OPTIONS = {
-  duration: 1.6,
-  easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  orientation: "vertical" as const,
-  gestureOrientation: "vertical" as const,
-  smoothWheel: true,
-  wheelMultiplier: 1,
-  touchMultiplier: 2,
-};
-
 export function SmoothScroll({ children }: { children: ReactNode }): ReactNode {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
-    const lenis = new Lenis(LENIS_OPTIONS);
+    // Detect touch-primary devices — skip Lenis entirely so native
+    // one-finger scrolling works without interference.
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
+    const lenis = new Lenis({
+      duration: 1.6,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical" as const,
+      gestureOrientation: "vertical" as const,
+      smoothWheel: true,
+      wheelMultiplier: 1,
+    });
 
     function raf(time: number): void {
       lenis.raf(time);

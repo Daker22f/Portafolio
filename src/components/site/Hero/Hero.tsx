@@ -7,7 +7,7 @@ import StrokeText from "@/components/site/StrokeText/StrokeText";
 import TextType from "@/components/site/TextType/TextType";
 import { profile } from "@/lib/site-data";
 
-const PORTRAIT_SRC = "https://github.com/Daker22f.png";
+const PORTRAIT_SRC = "/me.jpeg";
 
 export function Hero(): ReactNode {
   return (
@@ -31,7 +31,7 @@ export function Hero(): ReactNode {
             <h1 aria-label="Ingeniero de software" className="flex flex-col gap-1">
               <StrokeText
                 text="Ingeniero de software"
-                strokeColor="#A78BFA"
+                strokeColor="#e4e4e7"
                 fillColor="#F8FAFC"
                 strokeWidth={1.6}
                 drawDuration={1.6}
@@ -46,7 +46,7 @@ export function Hero(): ReactNode {
               />
               <StrokeText
                 text="& Full-Stack"
-                strokeColor="#A78BFA"
+                strokeColor="#e4e4e7"
                 fillColor="#F8FAFC"
                 strokeWidth={1.6}
                 drawDuration={1.6}

@@ -1,40 +1,31 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Bot, Layers, Sparkles } from "lucide-react";
-import type { ComponentType, ReactNode } from "react";
+import { ArrowRight, Star, Users } from "lucide-react";
+import type { ReactNode } from "react";
 import { AnimeHeading } from "@/components/site/AnimeHeading/AnimeHeading";
 import { AnimeReveal } from "@/components/site/AnimeReveal/AnimeReveal";
 import { projects as siteProjects } from "@/lib/site-data";
 
 import "./Projects.css";
 
+const GITHUB_USERNAME = "daker22f";
+const GITHUB_AVATAR = "https://github.com/Daker22f.png";
+
 type Project = {
   id: string;
-  icon: ComponentType<{ className?: string }>;
-  iconLabel: string;
-  title: string;
+  name: string;
   description: string;
-  meta: string;
-  imageRatio: number;
-  image: string;
-  imageAlt: string;
-};
-
-const PROJECT_ICONS: Record<string, ComponentType<{ className?: string }>> = {
-  brackix: Layers,
-  undamned: Sparkles,
-  kwixell: Bot,
+  stack: string[];
+  stars: number;
+  collaborators: number;
 };
 
 const PROJECTS: Project[] = siteProjects.map((p) => ({
   id: p.slug,
-  icon: PROJECT_ICONS[p.slug] ?? Layers,
-  iconLabel: p.name,
-  title: p.tagline,
+  name: p.name,
   description: p.description,
-  meta: `${p.year} · ${p.stack[0] ?? ""}`,
-  imageRatio: 1024 / 768,
-  image: p.image,
-  imageAlt: `${p.name} — captura del proyecto`,
+  stack: p.stack,
+  stars: p.stars,
+  collaborators: p.collaborators,
 }));
 
 export type ProjectsProps = {
@@ -64,42 +55,56 @@ export function Projects({
               delay={Math.min(index * 0.08, 0.32)}
               className="mb-6 break-inside-avoid md:mb-7"
             >
-              <article className="project-card flex flex-col gap-4 rounded-3xl border border-border bg-elevated p-3 sm:p-3.5">
-                <header className="flex items-center gap-2.5 px-1 pt-2">
-                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border bg-background">
-                    <project.icon className="size-3.5 text-foreground" aria-hidden="true" />
-                  </span>
-                  <span className="text-sm font-medium tracking-tight text-foreground">
-                    {project.iconLabel}
-                  </span>
+              <article className="project-card flex flex-col gap-4 rounded-3xl border border-border bg-elevated p-5">
+                <header className="flex items-start justify-between gap-3">
+                  <div className="flex min-w-0 flex-col">
+                    <span className="text-xs tracking-tight text-muted-foreground">
+                      {GITHUB_USERNAME}
+                    </span>
+                    <h3 className="mt-0.5 truncate font-display text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                      {project.name}
+                    </h3>
+                  </div>
+                  <img
+                    src={GITHUB_AVATAR}
+                    alt="Foto de perfil de GitHub"
+                    loading="lazy"
+                    className="size-11 shrink-0 rounded-full bg-muted ring-1 ring-border"
+                  />
                 </header>
 
-                <div
-                  className="project-card__image relative w-full overflow-hidden rounded-2xl bg-muted ring-1 ring-border"
-                  style={{ aspectRatio: project.imageRatio }}
-                >
-                  <div className="project-card__image-inner">
-                    <img
-                      src={project.image}
-                      alt={project.imageAlt}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2.5 px-1 pb-1">
-                  <h3 className="text-lg font-medium leading-snug tracking-tight text-foreground sm:text-xl">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {project.description}
-                  </p>
-                </div>
-
-                <p className="px-1 pb-2 text-xs tracking-tight text-muted-foreground">
-                  {project.meta}
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {project.description}
                 </p>
+
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Star className="size-3.5" aria-hidden="true" />
+                    {project.stars} estrellas
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <Users className="size-3.5" aria-hidden="true" />
+                    {project.collaborators} colaboradores
+                  </span>
+                </div>
+
+                <hr className="border-hairline" />
+
+                <footer className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="truncate text-sm font-medium text-foreground">
+                    {project.name}
+                  </span>
+                  <div className="flex flex-wrap justify-end gap-1.5">
+                    {project.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full bg-background px-2.5 py-1 text-xs text-foreground/80 ring-1 ring-border"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </footer>
               </article>
             </AnimeReveal>
           ))}

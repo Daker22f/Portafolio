@@ -27,8 +27,8 @@ function AboutHero() {
     <section className="relative overflow-hidden px-4 pt-32 pb-16 sm:pt-40 sm:pb-24">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="hero-glow absolute inset-0" />
-        <div className="ambient-orb animate-orb -top-24 left-[8%] h-72 w-72 bg-primary/25" />
-        <div className="ambient-orb right-[4%] top-40 h-80 w-80 animate-orb bg-[oklch(0.62_0.19_285/0.2)]" />
+        <div className="ambient-orb animate-orb -top-24 left-[8%] h-72 w-72 bg-foreground/10" />
+        <div className="ambient-orb right-[4%] top-40 h-80 w-80 animate-orb bg-foreground/25" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-b from-transparent to-background" />
       </div>
 
@@ -40,15 +40,15 @@ function AboutHero() {
             handle="daker22f"
             status="Disponible para proyectos"
             contactText="Contáctame"
-            avatarUrl="https://github.com/Daker22f.png"
+            avatarUrl="/me.jpeg"
             iconUrl="/iconpattern.svg"
             showUserInfo
             enableTilt
             enableMobileTilt={false}
             behindGlowEnabled
-            behindGlowColor="rgba(130, 145, 255, 0.55)"
+            behindGlowColor="rgba(255, 255, 255, 0.55)"
             behindGlowSize="65%"
-            innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
+            innerGradient="linear-gradient(145deg,#6b6b6b8c 0%,#ffffff44 100%)"
             onContactClick={() => {
               window.location.href = `mailto:${profile.email}`;
             }}

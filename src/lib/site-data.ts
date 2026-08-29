@@ -7,6 +7,8 @@ export type Project = {
   url: string;
   image: string;
   year: string;
+  stars: number;
+  collaborators: number;
 };
 
 export type Discipline = {
@@ -24,9 +26,8 @@ export const profile = {
   email: "hola@robert-dev.com",
   github: "https://github.com/Daker22f",
   legacySite: "https://robert-dev.vercel.app/",
-  intro:
-    "Construyo tu proxima aplicación web, desde el diseño hasta el despliegue.",
-
+  bio: "Ingeniero de software full-stack en Santo Domingo. Front-end con React y TypeScript, back-end con C#, Node y Python, y bases de datos relacionales y NoSQL.",
+  intro: "Construyo tu proxima aplicación web, desde el diseño hasta el despliegue.",
 } as const;
 
 export const projects: Project[] = [
@@ -40,6 +41,8 @@ export const projects: Project[] = [
     url: "https://www.brackix.com/es",
     image: "https://robert-dev.vercel.app/assets/images/work/Brackix.jpeg",
     year: "2025",
+    stars: 0,
+    collaborators: 1,
   },
   {
     slug: "undamned",
@@ -51,6 +54,8 @@ export const projects: Project[] = [
     url: "https://undamned.vercel.app/",
     image: "https://robert-dev.vercel.app/assets/images/work/Undamned.jpeg",
     year: "2025",
+    stars: 0,
+    collaborators: 1,
   },
   {
     slug: "kwixell",
@@ -62,6 +67,8 @@ export const projects: Project[] = [
     url: "https://kwixell.brackix.com/",
     image: "https://robert-dev.vercel.app/assets/images/work/kwixell.jpeg",
     year: "2024",
+    stars: 0,
+    collaborators: 1,
   },
 ];
 
@@ -71,21 +78,21 @@ export const disciplines: Discipline[] = [
     description:
       "Interfaces dinámicas, responsivas y optimizadas, con foco en experiencia de usuario, accesibilidad y rendimiento real.",
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "React Native"],
-    image: "/disciplines/frontend.svg",
+    image: "/disciplines/frontend.png",
   },
   {
     title: "Back-end",
     description:
       "Lógica de negocio, APIs y aplicaciones seguras y eficientes, con una arquitectura limpia y mantenible.",
     items: ["C#", "Node.js", "Python", "PHP", "Docker"],
-    image: "/disciplines/backend.svg",
+    image: "/disciplines/backend.png",
   },
   {
     title: "Datos y análisis",
     description:
       "Modelado de datos, consultas y optimización para almacenar y procesar información de forma correcta y veloz.",
     items: ["PostgreSQL", "SQL Server", "MongoDB", "MySQL"],
-    image: "/disciplines/data.svg",
+    image: "/disciplines/datos.png",
   },
 ];
 

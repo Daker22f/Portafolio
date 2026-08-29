@@ -138,35 +138,35 @@ function RootComponent() {
             menuAriaLabel="Abrir menú"
             useFixedPosition
             menuBg="#ffffff"
-            menuContentColor="#0a65c7ff"
+            menuContentColor="#111318"
             items={[
               {
                 label: "Inicio",
                 href: "/",
                 ariaLabel: "Ir al inicio",
                 rotation: -6,
-                hoverStyles: { bgColor: "var(--color-primary)", textColor: "#ffffff" },
+                hoverStyles: { bgColor: "var(--color-primary)", textColor: "#111318" },
               },
               {
                 label: "Proyectos",
                 href: "/proyectos",
                 ariaLabel: "Ver proyectos",
                 rotation: 6,
-                hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+                hoverStyles: { bgColor: "#d4d4d8", textColor: "#111318" },
               },
               {
                 label: "Sobre mí",
                 href: "/sobre-mi",
                 ariaLabel: "Acerca de mí",
                 rotation: 6,
-                hoverStyles: { bgColor: "#22d3ee", textColor: "#04121a" },
+                hoverStyles: { bgColor: "#a1a1aa", textColor: "#111318" },
               },
               {
                 label: "Contacto",
                 href: "/contacto",
                 ariaLabel: "Ir a contacto",
                 rotation: -6,
-                hoverStyles: { bgColor: "#f97316", textColor: "#ffffff" },
+                hoverStyles: { bgColor: "#f4f4f5", textColor: "#111318" },
               },
             ]}
           />

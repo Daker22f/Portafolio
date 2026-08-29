@@ -3,7 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Marquee } from "@/components/site/Marquee";
 import TextLoop from "@/components/site/TextLoop/TextLoop";
-import TiltedCard from "@/components/site/TiltedCard/TiltedCard";
 import ScrollExpand from "@/components/site/ScrollExpand/ScrollExpand";
 import { Projects } from "@/components/site/Projects/Projects";
 import { AnimeReveal } from "@/components/site/AnimeReveal/AnimeReveal";
@@ -38,9 +37,9 @@ function Index() {
 
       <section className="px-4 sm:px-6">
         <ScrollExpand
-          src="/scroll-expand-hero.svg"
+          src="/projects-bg.png"
           alt="Tres ventanas de productos web en desarrollo"
-          title="Proyectos"
+          title="EFECTIVIDAD"
           scrollHint="Continúa haciendo scroll"
           mediaZoom={1.35}
           startWidth={42}
@@ -71,33 +70,17 @@ function Index() {
             description="Cubro el ciclo completo: interfaz, lógica de negocio y datos, con arquitectura limpia y código mantenible."
           />
 
-          <AnimeStagger className="mt-12 grid gap-10 sm:gap-8 md:grid-cols-3">
-            {disciplines.map((d) => (
-              <div key={d.title} className="flex h-full flex-col items-center text-center">
-                <div className="w-full">
-                  <TiltedCard
-                    imageSrc={d.image}
-                    altText={`Área: ${d.title}`}
-                    captionText={d.title}
-                    containerHeight={300}
-                    containerWidth="100%"
-                    imageHeight={300}
-                    imageWidth="100%"
-                    scaleOnHover={1.06}
-                    rotateAmplitude={12}
-                    showMobileWarning={false}
-                    showTooltip={false}
-                    displayOverlayContent
-                    overlayContent={<span className="tilted-card-badge">{d.title}</span>}
-                  />
-                </div>
-                <h3 className="mt-5 font-display text-xl font-semibold tracking-tight">
+          <AnimeStagger className="mt-12 grid gap-5 md:grid-cols-3">
+            {disciplines.map((d, i) => (
+              <article key={d.title} className="glass h-full rounded-4xl p-7">
+                <span className="font-display text-sm font-semibold text-primary">0{i + 1}</span>
+                <h2 className="mt-3 font-display text-xl font-semibold tracking-tight">
                   {d.title}
-                </h3>
+                </h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {d.description}
                 </p>
-                <ul className="mt-5 flex flex-wrap justify-center gap-1.5">
+                <ul className="mt-5 flex flex-wrap gap-1.5">
                   {d.items.map((item) => (
                     <li
                       key={item}
@@ -107,7 +90,7 @@ function Index() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </article>
             ))}
           </AnimeStagger>
         </div>

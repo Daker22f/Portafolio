@@ -28,6 +28,7 @@ export interface StrokeTextProps {
   reverse?: boolean;
   className?: string;
   style?: CSSProperties;
+  startPromise?: Promise<unknown>;
 }
 
 interface StrokeTextBox {
@@ -56,6 +57,7 @@ const StrokeText = ({
   reverse = false,
   className = "",
   style = {},
+  startPromise,
 }: StrokeTextProps) => {
   const rootRef = useRef<HTMLSpanElement | null>(null);
   const strokeTextRef = useRef<SVGTextElement | null>(null);
@@ -197,6 +199,7 @@ const StrokeText = ({
     let timeline: gsap.core.Timeline | null = null;
     let scrollTrigger: ReturnType<typeof ScrollTrigger.create> | null = null;
     let removeHover: (() => void) | null = null;
+    let cancelled = false;
 
     if (trigger === "hover") {
       setEnd();
@@ -217,17 +220,28 @@ const StrokeText = ({
           onEnter: () => timeline?.play(0),
         });
       } else {
-        timeline.play(0);
+        let activated = false;
+        const playOnMount = () => {
+          if (activated || cancelled) return;
+          activated = true;
+          timeline?.play(0);
+        };
+        if (startPromise) {
+          startPromise.then(playOnMount).catch(playOnMount);
+        } else {
+          playOnMount();
+        }
       }
     }
 
     return () => {
+      cancelled = true;
       removeHover?.();
       scrollTrigger?.kill();
       timeline?.kill();
       gsap.killTweensOf(targets);
     };
-  }, [box, dash, drawDuration, fillDelay, stagger, ease, trigger, fillMode, reverse]);
+  }, [box, dash, drawDuration, fillDelay, stagger, ease, trigger, fillMode, reverse, startPromise]);
 
   const viewBox = box
     ? `${box.x} ${box.y} ${box.width} ${box.height}`

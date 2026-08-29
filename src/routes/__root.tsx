@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { profile } from "@/lib/site-data";
 import BubbleMenu from "@/components/site/BubbleMenu/BubbleMenu";
 import { Footer } from "@/components/site/Footer";
+import LoadingScreen from "@/components/site/LoadingScreen/LoadingScreen";
 import TargetCursor from "@/components/site/TargetCursor/TargetCursor";
 import { SmoothScroll } from "@/components/site/SmoothScroll/SmoothScroll";
 import { Toaster } from "@/components/ui/sonner";
@@ -178,6 +179,7 @@ function RootComponent() {
           <Footer />
         </div>
       </SmoothScroll>
+      <LoadingScreen />
       <TargetCursor
         spinDuration={2}
         hideDefaultCursor

@@ -5,6 +5,7 @@ import { PortraitMorph } from "@/components/site/Hero/PortraitMorph";
 import Threads from "@/components/site/Threads/Threads";
 import StrokeText from "@/components/site/StrokeText/StrokeText";
 import TextType from "@/components/site/TextType/TextType";
+import { introReady } from "@/lib/intro-ready";
 import { profile } from "@/lib/site-data";
 
 const PORTRAIT_SRC = "/me.jpeg";
@@ -34,30 +35,32 @@ export function Hero(): ReactNode {
                 strokeColor="#e4e4e7"
                 fillColor="#F8FAFC"
                 strokeWidth={1.6}
-                drawDuration={1.6}
-                fillDelay={0.2}
-                stagger={0.05}
+                drawDuration={2.2}
+                fillDelay={0.3}
+                stagger={0.06}
                 ease="power2.out"
                 trigger="mount"
                 fillMode="wipe"
                 fontSize={96}
                 fontWeight={600}
                 letterSpacing={-3}
+                startPromise={introReady}
               />
               <StrokeText
                 text="& Full-Stack"
                 strokeColor="#e4e4e7"
                 fillColor="#F8FAFC"
                 strokeWidth={1.6}
-                drawDuration={1.6}
-                fillDelay={0.35}
-                stagger={0.05}
+                drawDuration={2.2}
+                fillDelay={0.5}
+                stagger={0.06}
                 ease="power2.out"
                 trigger="mount"
                 fillMode="wipe"
                 fontSize={96}
                 fontWeight={600}
                 letterSpacing={-3}
+                startPromise={introReady}
               />
             </h1>
 

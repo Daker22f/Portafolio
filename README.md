@@ -1,4 +1,4 @@
-# Portafolio de Abdiel Carrasco
+# Portafolio de Abdiel Carrasco 2
 
 Portafolio personal construido con **React 19**, **TypeScript**, **TanStack Start/Router** y **Tailwind CSS 4**. Incluye animaciones avanzadas con Framer Motion, GSAP, Anime.js y Three.js.
 

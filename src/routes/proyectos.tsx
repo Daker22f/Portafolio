@@ -7,7 +7,7 @@ import { ogImage } from "@/lib/site-data";
 
 const title = "Proyectos — Robert Carrasco";
 const description =
-  "Brackix, Undamned y Kwixell: productos web construidos con React, TypeScript, Next.js y Tailwind CSS.";
+  "Brackix, Telefactura y Kwixell: productos web construidos con React, TypeScript, Next.js y Tailwind CSS.";
 
 export const Route = createFileRoute("/proyectos")({
   head: () => ({

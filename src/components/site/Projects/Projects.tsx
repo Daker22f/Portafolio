@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Star, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Star, Users } from "lucide-react";
 import type { ReactNode } from "react";
 import { AnimeHeading } from "@/components/site/AnimeHeading/AnimeHeading";
 import { AnimeReveal } from "@/components/site/AnimeReveal/AnimeReveal";
@@ -17,6 +17,8 @@ type Project = {
   stack: string[];
   stars: number;
   collaborators: number;
+  url: string;
+  image: string;
 };
 
 const PROJECTS: Project[] = siteProjects.map((p) => ({
@@ -26,6 +28,8 @@ const PROJECTS: Project[] = siteProjects.map((p) => ({
   stack: p.stack,
   stars: p.stars,
   collaborators: p.collaborators,
+  url: p.url,
+  image: p.image,
 }));
 
 export type ProjectsProps = {
@@ -55,13 +59,32 @@ export function Projects({
               delay={Math.min(index * 0.08, 0.32)}
               className="mb-6 break-inside-avoid md:mb-7"
             >
-              <article className="project-card flex flex-col gap-4 rounded-3xl border border-border bg-elevated p-5">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="project-card group/card flex flex-col gap-4 rounded-3xl border border-border bg-elevated p-5 transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+              >
+                <div className="project-card__image relative aspect-16/9 w-full overflow-hidden rounded-2xl border border-border/50 bg-muted">
+                  <img
+                    src={project.image}
+                    alt={`Vista previa de ${project.name}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="project-card__image-inner size-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-background/60 via-transparent to-transparent opacity-80" />
+                  <span className="absolute right-3 top-3 inline-flex size-8 items-center justify-center rounded-full bg-background/80 text-foreground shadow-sm backdrop-blur-md transition-transform duration-300 group-hover/card:scale-110 group-hover/card:rotate-45">
+                    <ArrowUpRight className="size-4" aria-hidden="true" />
+                  </span>
+                </div>
+
                 <header className="flex items-start justify-between gap-3">
                   <div className="flex min-w-0 flex-col">
                     <span className="text-xs tracking-tight text-muted-foreground">
                       {GITHUB_USERNAME}
                     </span>
-                    <h3 className="mt-0.5 truncate font-display text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                    <h3 className="mt-0.5 truncate font-display text-lg font-semibold tracking-tight text-foreground transition-colors group-hover/card:text-primary sm:text-xl">
                       {project.name}
                     </h3>
                   </div>
@@ -105,7 +128,7 @@ export function Projects({
                     ))}
                   </div>
                 </footer>
-              </article>
+              </a>
             </AnimeReveal>
           ))}
         </div>

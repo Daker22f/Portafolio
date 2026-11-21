@@ -70,6 +70,19 @@ export const projects: Project[] = [
     stars: 15,
     collaborators: 1,
   },
+  {
+    slug: "fixo",
+    name: "Fixo",
+    tagline: "Inteligencia y análisis crypto",
+    description:
+      "Plataforma de inteligencia social y análisis crypto: descubrimiento de traders, exploración de actividad on-chain, métricas de rendimiento y registro de operaciones.",
+    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    url: "https://fixo-landing.vercel.app/",
+    image: "/projects/fixo.png",
+    year: "2025",
+    stars: 10,
+    collaborators: 1,
+  },
 ];
 
 export const disciplines: Discipline[] = [

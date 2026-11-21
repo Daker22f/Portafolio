@@ -164,6 +164,13 @@ function RootComponent() {
                 hoverStyles: { bgColor: "#a1a1aa", textColor: "#111318" },
               },
               {
+                label: "Certificados",
+                href: "/certificados",
+                ariaLabel: "Ver certificados y títulos",
+                rotation: -5,
+                hoverStyles: { bgColor: "var(--color-primary)", textColor: "#111318" },
+              },
+              {
                 label: "Contacto",
                 href: "/contacto",
                 ariaLabel: "Ir a contacto",

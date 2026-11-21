@@ -7,7 +7,7 @@ import StrokeText from "@/components/site/StrokeText/StrokeText";
 import TextType from "@/components/site/TextType/TextType";
 import { profile } from "@/lib/site-data";
 
-const PORTRAIT_SRC = "https://github.com/Daker22f.png";
+const PORTRAIT_SRC = "/me.jpeg";
 
 export function Hero(): ReactNode {
   return (
